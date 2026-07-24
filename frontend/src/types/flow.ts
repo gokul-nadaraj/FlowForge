@@ -4,6 +4,9 @@ import type { Connection, Edge, EdgeChange, Node, NodeChange, NodeProps } from '
 export type NodeKind = 'manual' | 'transform' | 'log' | 'webhook'
 export type WebhookMethod = 'POST' | 'PUT' | 'GET'
 
+// This is a TypeScript file that defines 
+// various types and interfaces related to flows
+//  and nodes in a flowchart or workflow application. 
 export interface FlowPatch {
   value?: string
   template?: string

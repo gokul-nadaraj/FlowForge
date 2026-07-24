@@ -4,6 +4,7 @@ function readJson<T>(response: Response): Promise<T> {
   return response.json()
 }
 
+//interface FlowApi 
 export async function loadFlow(): Promise<FlowResponse | null> {
   const response = await fetch('/api/flows/seed')
   return readJson<FlowResponse | null>(response)
