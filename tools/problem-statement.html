@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  @page { margin: 22mm 20mm; }
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.5; font-size: 13px; }
+  h1 { font-size: 24px; margin: 0 0 2px; }
+  h2 { font-size: 15px; margin: 22px 0 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+  .sub { color: #666; margin: 0 0 18px; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin: 3px 0; }
+  .task { background: #f7f9fc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
+  .task h3 { margin: 0 0 4px; font-size: 14px; }
+  .muted { color: #666; }
+</style>
+</head>
+<body>
+  <h1>FlowForge — Full-Stack Engineering Exercise</h1>
+  <p class="sub">Time-box: 3–4 hours &nbsp;•&nbsp; Stack: TypeScript, Express, React, React Flow</p>
+
+  <h2>Scenario</h2>
+  <p>You have joined a team building <strong>FlowForge</strong>, an early prototype of a
+  node-based automation builder. Users drag <em>Input</em>, <em>Process</em>, and
+  <em>Output</em> nodes onto a canvas, connect them, and run the flow so data passes from
+  one node to the next. Flows are saved to disk as JSON. The prototype works, but it was
+  written quickly and now needs an engineer's care.</p>
+
+  <h2>What the app does today</h2>
+  <ul>
+    <li>Add nodes from the toolbar: <strong>Input</strong> (a manual value),
+        <strong>Transform</strong> (rewrites its input via a <code>{{input}}</code> template,
+        with an uppercase option), and <strong>Log</strong> (shows the result).</li>
+    <li>Connect nodes, click <strong>Run</strong> to execute, and <strong>Save</strong> /
+        <strong>Reload</strong> to persist and restore a flow.</li>
+  </ul>
+
+  <h2>How to run</h2>
+  <p>See <code>README.md</code>. You need Node.js 18+. Start the backend and the frontend,
+  then open the app in your browser.</p>
+
+  <h2>Your tasks</h2>
+
+  <div class="task">
+    <h3>1. Improve the codebase</h3>
+    <p>The prototype runs but is not structured for a team to build on. Leave it in a state
+    you would be comfortable handing to a colleague. Behavior must not regress.</p>
+  </div>
+
+  <div class="task">
+    <h3>2. Add an HTTP / Webhook output node</h3>
+    <p>Add a new output node that sends the processed result to an external endpoint when the
+    flow runs. It must support a configurable destination URL and request method, and the
+    outcome of the request must be visible in the app. Choose sensible defaults.</p>
+  </div>
+
+  <div class="task">
+    <h3>3. Find and fix the bugs</h3>
+    <p>While using the app you will notice behavior that is incorrect. There are one or two
+    such defects. Reproduce them, fix them, and make sure they stay fixed.</p>
+  </div>
+
+  <h2>What we expect</h2>
+  <ul>
+    <li><strong>Correctness:</strong> the app runs; your feature works end to end; the bugs are gone.</li>
+    <li><strong>Code quality:</strong> clear structure, sensible boundaries, no needless duplication, reasonable types.</li>
+    <li><strong>Git hygiene:</strong> incremental, well-described commits.</li>
+    <li><strong>Communication:</strong> a short <code>NOTES.md</code> describing your key decisions,
+        trade-offs, and anything you would do with more time.</li>
+  </ul>
+
+  <h2>Out of scope</h2>
+  <p class="muted">Authentication, deployment, a real database, and visual/design polish. A JSON
+  file for storage is fine. Do not spend time on these.</p>
+
+  <h2>Submission</h2>
+  <p>Submit as a git repository (or a zip that includes the <code>.git</code> history). Keep the
+  app runnable via the steps in <code>README.md</code>.</p>
+</body>
+</html>
