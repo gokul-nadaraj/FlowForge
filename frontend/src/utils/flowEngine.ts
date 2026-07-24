@@ -7,6 +7,7 @@ function updateWebhookStatus(setNodes: SetFlowNodes, nodeId: string, webhookStat
     : node))
 }
 
+// Sends a webhook request and updates the node's status
 async function sendWebhook(node: FlowNode, inputVal: unknown, setNodes: SetFlowNodes) {
   const url = (node.data.url || '').trim()
   const method = node.data.method || 'POST'

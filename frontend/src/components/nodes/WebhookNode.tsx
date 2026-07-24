@@ -3,7 +3,7 @@ import type { FlowNodeProps, WebhookMethod } from '../../types/flow'
 import { nodeBaseStyle, nodeHeaderStyle, nodeInputStyle, nodeLabelStyle } from './nodeStyles'
 
 const webhookMethods: WebhookMethod[] = ['POST', 'PUT', 'GET']
-
+// This is a React component that represents a Webhook node in a flowchart or workflow application.
 function WebhookNode(props: FlowNodeProps) {
   return (
     <div style={{ ...nodeBaseStyle, width: 220 }}>

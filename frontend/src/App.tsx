@@ -106,7 +106,7 @@ export default function App() {
   return (
     <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <div style={{ padding: 8, borderBottom: '1px solid #ccc', display: 'flex', gap: 8, alignItems: 'center' }}>
-        <b>FlowForge</b>
+        <b>FlowForg</b>
         <button onClick={() => addNode('manual')}>+ Input</button>
         <button onClick={() => addNode('transform')}>+ Transform</button>
         <button onClick={() => addNode('log')}>+ Log</button>

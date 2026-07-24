@@ -26,6 +26,7 @@ export default function useFlow() {
     setNodes((currentNodes) => currentNodes.map((node) => node.id === id ? { ...node, data: { ...node.data, ...patch } } : node))
   }, [])
 
+
   function decorate(list: SavedFlowNode[]): FlowNode[] {
     return list.map((node) => ({
       ...node,

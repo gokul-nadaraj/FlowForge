@@ -24,6 +24,8 @@ export async function reloadFlow(flowId: string): Promise<FlowResponse> {
   return readJson<FlowResponse>(response)
 }
 
+//webhook api
+
 export async function sendWebhook(payload: WebhookPayload): Promise<WebhookResponse> {
   const response = await fetch('/api/webhook', {
     method: 'POST',

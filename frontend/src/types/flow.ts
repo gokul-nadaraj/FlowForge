@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react'
 import type { Connection, Edge, EdgeChange, Node, NodeChange, NodeProps } from 'reactflow'
-
+//added types for flow nodes and edges
 export type NodeKind = 'manual' | 'transform' | 'log' | 'webhook'
 export type WebhookMethod = 'POST' | 'PUT' | 'GET'
 
