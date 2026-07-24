@@ -1,12 +1,12 @@
 import { Handle, Position } from 'reactflow'
 import type { FlowNodeProps } from '../../types/flow'
-import { nodeBaseStyle, nodeHeaderStyle } from './nodeStyles'
+import { logValueStyle, nodeBaseStyle, nodeHeaderColors, nodeHeaderStyle } from './nodeStyles'
 
 function LogNode(props: FlowNodeProps) {
   return (
-    <div style={{ ...nodeBaseStyle, width: 180 }}>
-      <div style={nodeHeaderStyle}>Log / Preview</div>
-      <div style={{ fontSize: 13, minHeight: 18, wordBreak: 'break-all' }}>{props.data.result}</div>
+    <div className="flow-node-card" style={{ ...nodeBaseStyle, width: 210 }}>
+      <div style={{ ...nodeHeaderStyle, background: nodeHeaderColors.log }}>📄 Log / Preview</div>
+      <div style={logValueStyle}>{props.data.result}</div>
       <Handle type="target" position={Position.Left} />
     </div>
   )

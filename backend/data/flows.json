@@ -7,50 +7,51 @@
         "id": "n1",
         "type": "manual",
         "position": {
-          "x": -98.47622192866578,
-          "y": -246.74095112285337
+          "x": -156.98858425940617,
+          "y": -436.6767857642888
         },
         "data": {
           "type": "manual",
-          "value": "Kannna"
+          "value": "manna"
         }
       },
       {
         "id": "n2",
         "type": "transform",
         "position": {
-          "x": 483.35984147952445,
-          "y": -256.8628797886394
+          "x": 245.92299402876978,
+          "y": -450.1890012726876
         },
         "data": {
           "type": "transform",
-          "template": "{{input}} world",
-          "upper": false
-        }
-      },
-      {
-        "id": "n3",
-        "type": "log",
-        "position": {
-          "x": 917.2846725728245,
-          "y": -314.3356240650948
-        },
-        "data": {
-          "type": "log",
-          "result": "Kannna world"
+          "template": "{{input}} things",
+          "upper": true
         }
       },
       {
         "id": "n102",
         "type": "webhook",
         "position": {
-          "x": 891.8665922768503,
-          "y": -12.446573223405998
+          "x": 768.8426642138226,
+          "y": -381.683580939961
         },
         "data": {
           "type": "webhook",
-          "url": "",
-          "method": "PUT"
+          "url": "https://webhook.site/ae5d3eb9-79f5-4f14-8784-edd0dcae8040",
+          "method": "POST",
+          "webhookStatus": "✅ Success (200)"
+        }
+      },
+      {
+        "id": "n101",
+        "type": "log",
+        "position": {
+          "x": 769.0433225557459,
+          "y": -541.9724570914084
+        },
+        "data": {
+          "type": "log",
+          "result": "MANNA THINGS"
         }
       }
     ],
@@ -72,6 +73,13 @@
         "target": "n102",
         "targetHandle": null,
         "id": "reactflow__edge-n2-n102"
+      },
+      {
+        "source": "n2",
+        "sourceHandle": null,
+        "target": "n101",
+        "targetHandle": null,
+        "id": "reactflow__edge-n2-n101"
       }
     ]
   }

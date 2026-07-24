@@ -27,17 +27,20 @@ export default function useFlow() {
   }, [])
 
 
-  function decorate(list: SavedFlowNode[]): FlowNode[] {
-    return list.map((node) => ({
-      ...node,
-      position: node.position || defaultPosition,
-      data: {
-        ...node.data,
-        webhookStatus: node.data.type === 'webhook' ? 'Waiting...' : undefined,
-        onChange: patchNode
-      }
-    }))
-  }
+function decorate(list: SavedFlowNode[]): FlowNode[] {
+  return list.map((node) => ({
+    ...node,
+    position: node.position || defaultPosition,
+    data: {
+      ...node.data,
+      webhookStatus:
+        node.data.type === 'webhook'
+          ? node.data.webhookStatus || 'Waiting...'
+          : undefined,
+      onChange: patchNode
+    }
+  }))
+}
 
   const onNodesChange = useCallback((changes: FlowNodeChange) => setNodes((currentNodes) => applyNodeChanges(changes, currentNodes)), [])
   const onEdgesChange = useCallback((changes: FlowEdgeChange) => setEdges((currentEdges) => applyEdgeChanges(changes, currentEdges)), [])

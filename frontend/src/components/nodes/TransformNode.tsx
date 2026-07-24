@@ -1,21 +1,23 @@
 import { Handle, Position } from 'reactflow'
 import type { FlowNodeProps } from '../../types/flow'
-import { nodeBaseStyle, nodeHeaderStyle, nodeInputStyle, nodeLabelStyle } from './nodeStyles'
+import { checkboxLabelStyle, checkboxStyle, nodeBaseStyle, nodeHeaderColors, nodeHeaderStyle, nodeInputStyle } from './nodeStyles'
 
 function TransformNode(props: FlowNodeProps) {
   return (
-    <div style={{ ...nodeBaseStyle, width: 180 }}>
-      <div style={nodeHeaderStyle}>Transform</div>
+    <div className="flow-node-card" style={{ ...nodeBaseStyle, width: 210 }}>
+      <div style={{ ...nodeHeaderStyle, background: nodeHeaderColors.transform }}>🔄Transform</div>
       <input
+        className="node-field"
         value={props.data.template}
         onChange={(event) => props.data.onChange(props.id, { template: event.target.value })}
         style={nodeInputStyle}
       />
-      <label style={nodeLabelStyle}>
+      <label style={checkboxLabelStyle}>
         <input
           type="checkbox"
           checked={!!props.data.upper}
           onChange={(event) => props.data.onChange(props.id, { upper: event.target.checked })}
+          style={checkboxStyle}
         /> uppercase
       </label>
       <Handle type="target" position={Position.Left} />
