@@ -33,5 +33,5 @@ Frontend runs on http://localhost:5173 — open it in your browser.
 - Click **Save** to persist the flow and **Reload** to load it from the server.
 
 ## Notes
-- Frontend file organization, node connections, and recent safe refactors are
-  documented in `node.md`.
+
+For additional implementation details, please refer to `node.md`, which documents the frontend architecture, node execution flow, file organization, and key refactoring decisions.

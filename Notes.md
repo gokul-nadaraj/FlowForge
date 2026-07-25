@@ -1,24 +1,148 @@
-# Last Changes
 
-## Flow Execution Order Fix
+# Code Improvements
 
-The flow execution engine was refactored so nodes run according to the workflow graph instead of the order they appear in the `nodes` array.
+I cleaned the project structure to make it easier to understand and maintain.
 
-Why this changed:
+- Separated logic into hooks, services, utils, types, constants and components.
+- Removed repeated code where possible.
+- Added proper TypeScript types instead of using any.
+- Improved variable names and code readability.
+- Used async/await for API calls.
 
-- The previous `runFlow()` implementation depended on array order, so moving, saving, reloading, or otherwise reordering nodes could produce incorrect results.
-- Workflow execution should follow connections between nodes: source nodes such as Manual nodes run first, then downstream Transform, Log, and Webhook nodes run after their parent outputs are available.
-- The webhook node should receive the processed value from its connected parent, not a fallback value from whichever node happened to execute most recently.
 
-What changed:
+# Bugs Fixed
 
-- Built graph maps from `edges`, including outgoing edges, incoming edges, and in-degree counts.
-- Added topological execution ordering so each node runs only after its connected parent node or nodes have run.
-- Stored node outputs by node ID and used the connected parent output as the child input.
-- Removed the `latestOutput` workaround because graph-based execution now provides the correct input directly.
+## Node position
 
-What stayed the same:
+After saving and reloading, some nodes lost their position.
 
-- No UI, component, backend API, save/reload, or webhook feature behavior was intentionally changed.
-- `runFlow()` keeps the same function signature.
-- Webhook status updates and Log node result updates still use the existing `setNodes` behavior.
+Fix:
+- Saved node position in the flow JSON.
+- Added a default position while loading.
+
+
+
+
+## Flow execution order
+
+The flow was running based on the node array order instead of the connections.
+
+Fix:
+- Built the execution order from graph connections.
+- Each node now runs only after its parent node is completed.
+- Used topological sorting (Kahn's Algorithm).
+
+
+
+
+# New Feature - Webhook Output Node
+
+Added a new *Webhook* output node.
+
+Features:
+
+- Enter destination URL
+- Select HTTP Method (POST / PUT / GET)
+- Sends processed result to external endpoint
+- Shows execution status
+- Success
+- Failed
+- Network Error
+
+Flow example:
+
+Manual
+   │
+   ▼
+Transform
+  ├──► Log
+  └──► Webhook
+
+
+# Webhook backend
+
+Instead of calling external APIs directly from React, the frontend calls the Express backend.
+
+Flow:
+
+React
+→ Express API
+→ External Webhook
+→ Response
+→ Update node status
+
+This avoids browser CORS issues and keeps HTTP logic in the backend.
+
+---
+
+# Toast Notifications
+
+Added toast messages for better user feedback.
+
+- Flow Saved
+- Flow Reloaded
+- Flow Executed Successfully
+- Webhook URL Required
+- Save Failed
+- Reload Failed
+
+---
+
+# Trade-offs
+
+ I kept the backend simple.
+
+- JSON file used as storage.
+- No database.
+- No authentication.
+- No deployment.
+
+
+# Key Decisions
+
+- Split frontend logic into smaller reusable files.
+- Used graph-based execution instead of node array order.
+- Implemented the Webhook request through the Express backend to avoid browser CORS issues.
+- Kept the existing UI behavior while improving the internal code structure.
+
+
+# Future Enhancements
+
+- User Authentication
+- Database (MongoDB / PostgreSQL)
+- Flow execution history
+- Multiple saved workflows
+- Flow import/export (JSON)
+- Delete and duplicate nodes
+- Retry option for failed webhooks
+- Custom request headers and authentication tokens
+- Request body editor for Webhook node
+- Flow templates
+- Undo / Redo
+- Zoom shortcuts
+- Search nodes
+- Unit tests
+- Integration tests
+- Better error logging
+- Dark mode
+- Docker support
+- Deployment to cloud (Vercel + Render / AWS)
+
+
+# Final
+
+The application now supports:
+
+- Manual Input Node
+- Transform Node
+- Log Node
+- Webhook Output Node
+- Save Flow
+- Reload Flow
+- Graph-based execution
+- HTTP Webhook requests
+- Toast notifications
+- Fixed bugs
+- Better TypeScript structure
+
+
