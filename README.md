@@ -34,4 +34,4 @@ Frontend runs on http://localhost:5173 — open it in your browser.
 
 ## Notes
 
-For additional implementation details, please refer to `node.md`, which documents the frontend architecture, node execution flow, file organization, and key refactoring decisions.
+For additional implementation details, please refer to `Notes.md`, which documents the frontend architecture, node execution flow, file organization, and key refactoring decisions.
