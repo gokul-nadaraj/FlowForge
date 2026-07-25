@@ -39,7 +39,7 @@
           "type": "webhook",
           "url": "https://webhook.site/ae5d3eb9-79f5-4f14-8784-edd0dcae8040",
           "method": "POST",
-          "webhookStatus": "✅ Success (200)"
+          "webhookStatus": " Success (200)"
         }
       },
       {

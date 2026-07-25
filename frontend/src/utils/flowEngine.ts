@@ -19,20 +19,27 @@ async function sendWebhook(node: FlowNode, inputVal: unknown, setNodes: SetFlowN
     return
   }
 
-  updateWebhookStatus(setNodes, node.id, 'Sending...')
+updateWebhookStatus(setNodes, node.id, 'Sending...')
 
-  try {
-    const response = await sendWebhookApi({
-      url,
-      method,
-      result: inputVal == null ? '' : String(inputVal)
-    })
+try {
+  const response = await sendWebhookApi({
+    url,
+    method,
+    result: inputVal == null ? '' : String(inputVal)
+  })
 
-    updateWebhookStatus(setNodes, node.id, response.success ? `✅ Success (${response.status})` : `❌ Failed (${response.status})`)
-  } catch (error) {
-    console.error('Webhook request failed', error)
-    updateWebhookStatus(setNodes, node.id, '❌ Network Error')
-  }
+  updateWebhookStatus(
+    setNodes,
+    node.id,
+    response.success
+      ? `✅ Success (${response.status})`
+      : `❌ Failed (${response.status})`
+  )
+
+} catch (error) {
+  console.error('Webhook request failed', error)
+  updateWebhookStatus(setNodes, node.id, '❌ Network Error')
+}
 }
 
 interface GraphMaps {
